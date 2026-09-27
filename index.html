@@ -267,9 +267,9 @@ details ul{margin:10px 0 0;padding-left:18px;color:var(--ink2);font-size:15px;di
 .eats{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:18px}
 .eats span{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);font-weight:600;margin-right:6px}
 .eats b{background:var(--chip);border-radius:999px;padding:8px 14px;font-size:14.5px;font-weight:500;color:var(--ink)}
-@media (max-width:760px){.cafes{grid-template-columns:1fr}.cafe{grid-template-columns:64px 1fr;gap:14px;padding:18px}.ill{width:64px;height:64px;border-radius:16px;padding:4px}}
+@media (max-width:760px){.cafes{grid-template-columns:1fr}.cafe{grid-template-columns:64px 1fr;gap:14px;padding:18px}.cafe .ill{width:64px;height:64px;border-radius:16px;padding:4px}}
 @media (max-width:480px){.tab{padding:12px 13px;font-size:14px}}
-.ill{width:88px;height:88px;border-radius:20px;display:grid;place-items:center;overflow:hidden;padding:6px}
+.ill{width:100%;max-width:88px;aspect-ratio:1;height:auto;border-radius:20px;display:grid;place-items:center;overflow:hidden;padding:6px}
 .ill svg{width:100%;height:100%;display:block;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
 .cafe:hover .ill svg{transform:scale(1.08) rotate(-3deg)}
 .ill.t1{background:var(--ilbg1)}.ill.t2{background:var(--ilbg2)}.ill.t3{background:var(--ilbg3)}.ill.t4{background:var(--ilbg4)}
