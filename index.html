@@ -16,6 +16,7 @@
   --accent:#D10D0D; --glass:rgba(248,244,230,.78); --chip:#EAE3CF; --qrbg:#FFFFFF; --onnavy:#FFFFFF;
   --grad:linear-gradient(100deg,#D10D0D 0%,#A3141A 35%,#6B3E20 70%,#233B5A 100%);
   --shadow:0 1px 2px rgba(35,59,90,.06),0 12px 32px -12px rgba(35,59,90,.22);
+  --ilbg1:#F3E7CF;--ilbg2:#E9EEEA;--ilbg3:#F6E0DA;--ilbg4:#EDE6F0;--ilink:#233B5A;--ila:#FFFDF7;--ilb:#E8836F;--ilc:#A9C4BF;--ild:#E2B77B;--ilk:#7A4A2A;
   --display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
   --body:"Instrument Sans","Helvetica Neue","Segoe UI",system-ui,sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
@@ -23,13 +24,13 @@
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   color-scheme:dark;--bg:#0F1A2A;--bg2:#15233A;--card:#1A2A42;--ink:#F6F1E2;--ink2:#C9C2B0;--ink3:#948E80;
   --line:#2A3B55;--navy:#C9D6EA;--red:#FF4D4D;--saffron:#D8C79E;--leaf:#8FB3B3;--brown:#D09A6E;--maroon:#E07A7A;--accent:#FF4D4D;
-  --glass:rgba(15,26,42,.75);--chip:#22324D;--onnavy:#0F1A2A;
+  --glass:rgba(15,26,42,.75);--chip:#22324D;--onnavy:#0F1A2A;--ilbg1:#23324A;--ilbg2:#1E3040;--ilbg3:#2E2A3A;--ilbg4:#26304A;--ilink:#F6F1E2;--ila:#2F4262;--ilb:#C9604E;--ilc:#4F7A74;--ild:#B98A4E;--ilk:#6B3E20;
   --grad:linear-gradient(100deg,#FF4D4D 0%,#FF7B5C 40%,#E0B07E 75%,#F6E7C1 100%);
   --shadow:0 1px 2px rgba(0,0,0,.4),0 12px 32px -12px rgba(0,0,0,.6);}}
 :root[data-theme="dark"]{
   color-scheme:dark;--bg:#0F1A2A;--bg2:#15233A;--card:#1A2A42;--ink:#F6F1E2;--ink2:#C9C2B0;--ink3:#948E80;
   --line:#2A3B55;--navy:#C9D6EA;--red:#FF4D4D;--saffron:#D8C79E;--leaf:#8FB3B3;--brown:#D09A6E;--maroon:#E07A7A;--accent:#FF4D4D;
-  --glass:rgba(15,26,42,.75);--chip:#22324D;--onnavy:#0F1A2A;
+  --glass:rgba(15,26,42,.75);--chip:#22324D;--onnavy:#0F1A2A;--ilbg1:#23324A;--ilbg2:#1E3040;--ilbg3:#2E2A3A;--ilbg4:#26304A;--ilink:#F6F1E2;--ila:#2F4262;--ilb:#C9604E;--ilc:#4F7A74;--ild:#B98A4E;--ilk:#6B3E20;
   --grad:linear-gradient(100deg,#FF4D4D 0%,#FF7B5C 40%,#E0B07E 75%,#F6E7C1 100%);
   --shadow:0 1px 2px rgba(0,0,0,.4),0 12px 32px -12px rgba(0,0,0,.6);}
 *{box-sizing:border-box}
@@ -269,6 +270,28 @@ details ul{margin:10px 0 0;padding-left:18px;color:var(--ink2);font-size:15px;di
 .vc a.lnk{color:var(--accent);font-weight:600;font-size:15px;text-decoration:none;margin-top:auto}
 @media (max-width:860px){.venue{grid-template-columns:1fr}}
 
+.cafes{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.cafe{background:var(--card);border:1px solid var(--line);border-radius:22px;overflow:hidden;display:flex;flex-direction:column}
+.cbody{padding:18px 24px 22px;display:flex;flex-direction:column;gap:6px;flex:1}
+.cafe h3{font-size:21px;font-weight:700;letter-spacing:-.015em;line-height:1.15}
+.cafe .addr{font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:var(--brown);font-weight:600}
+.cafe p{color:var(--ink2);font-size:15.5px}
+.cafe .lnk{color:var(--accent);font-weight:600;font-size:15px;text-decoration:none;margin-top:auto;padding-top:6px}
+.eats{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:18px}
+.eats span{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);font-weight:600;margin-right:6px}
+.eats b{background:var(--chip);border-radius:999px;padding:8px 14px;font-size:14.5px;font-weight:500;color:var(--ink)}
+@media (max-width:760px){.cafes{grid-template-columns:1fr}}
+@media (max-width:480px){.tab{padding:12px 13px;font-size:14px}}
+.ill{aspect-ratio:240/130;max-width:100%;display:grid;place-items:center;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+.ill svg{width:100%;height:100%;display:block;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.cafe:hover .ill svg{transform:scale(1.05) rotate(-1deg)}
+.ill.t1{background:var(--ilbg1)}.ill.t2{background:var(--ilbg2)}.ill.t3{background:var(--ilbg3)}.ill.t4{background:var(--ilbg4)}
+.ill .s{stroke:var(--ilink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;fill:none}
+.ill .a{fill:var(--ila)}.ill .b{fill:var(--ilb)}.ill .c{fill:var(--ilc)}.ill .d{fill:var(--ild)}.ill .k2{fill:var(--ilk)}
+.ill .a.s,.ill .b.s,.ill .c.s,.ill .d.s,.ill .k2.s{stroke:var(--ilink)}
+.ill g.s *{stroke:var(--ilink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.ill g.a *{fill:var(--ila)}.ill g.b *{fill:var(--ilb)}.ill g.c *{fill:var(--ilc)}.ill g.d *{fill:var(--ild)}.ill g.k2 *{fill:var(--ilk)}
+.ill g.s:not(.a):not(.b):not(.c):not(.d):not(.k2) *{fill:none}
 /* final */
 .final{text-align:center;padding-block:110px 120px;position:relative;overflow:hidden;isolation:isolate}
 .final h2{font-size:clamp(46px,9vw,112px);font-weight:800;letter-spacing:-.045em;line-height:.95}
@@ -333,6 +356,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-betw
     </div>
   </div>
 </header>
+
 
 <div class="marquee" aria-hidden="true">
   <div class="track">
@@ -431,7 +455,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-betw
       <div class="row"><div class="t">1:50 PM</div><div>
         <h3>Malnutrition in hemodialysis; malnutrition-inflammation-atherosclerosis (MIA) complex syndrome, lipid abnormalities, prevalence, and Indian perspective</h3>
         <div class="meta"><span class="fmt f-lec">Didactic lecture</span></div>
-        <div class="spks"><p class="spk"><b>Dr Suresh Shankar</b><br>Senior Vice-President, Global Clinical Affairs - Nephroplus</p></div>
+        <div class="spks"><p class="spk"><b>Dr Avinash Ignatius</b><br>Senior Consultant Nephrologist and HOD, Department of Nephrology, Noble Hospitals and Research Centre, Pune</p></div>
         <details><summary>Learning points</summary><ul>
           <li>Define the malnutrition-inflammation-atherosclerosis (MIA) complex and protein-energy wasting in patients on hemodialysis, and explain the pathophysiology of the chronic inflammatory state and the appetite-suppressing mechanisms specific to uremia.</li>
           <li>Lipid abnormalities seen in HD patients: what is “reverse epidemiology”?</li>
@@ -731,8 +755,9 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-betw
     <div class="sched-bar">
       <div class="tabs" role="tablist" aria-label="Travel information" data-tabs>
         <span class="tab-ind"></span>
-        <button class="tab" role="tab" id="v1" aria-selected="true" aria-controls="vp1">How to reach</button>
-        <button class="tab" role="tab" id="v2" aria-selected="false" aria-controls="vp2">Around Puducherry</button>
+        <button class="tab" role="tab" id="v1" aria-selected="true" aria-controls="vp1">Getting here</button>
+        <button class="tab" role="tab" id="v2" aria-selected="false" aria-controls="vp2">Sights</button>
+        <button class="tab" role="tab" id="v3" aria-selected="false" aria-controls="vp3">Cafés &amp; food</button>
       </div>
     </div>
 
@@ -743,9 +768,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-betw
         <div class="vc rv"><small>By road</small><b>Frequent buses and cabs</b><p>Chennai is about 3 to 4 hours away and Bengaluru about 6 to 7. Government and private buses run to the Puducherry bus stand, about 4 km from JIPMER.</p></div>
         <div class="vc rv"><small>Venue</small><b>Mini Auditorium, JIPMER Academic Centre</b><p>JIPMER campus, Dhanvantari Nagar, Puducherry.</p><a class="lnk" href="https://www.google.com/maps/search/?api=1&amp;query=JIPMER+Academic+Centre+Puducherry" target="_blank" rel="noopener">Open in Maps ↗</a></div>
         <div class="vc rv"><small>Stay</small><b>Limited rooms on campus</b><p>Affordable accommodation inside JIPMER is limited. Fill the request form early; rooms are allotted as available.</p><a class="lnk" href="https://forms.gle/UtRZyw3Ehsvc7AH48" target="_blank" rel="noopener">Request accommodation ↗</a></div>
-        <div class="vc rv"><small>Weather</small><b>Pack an umbrella</b><p>Late October is the start of the northeast monsoon in Puducherry. Expect warm days and passing showers.</p></div>
       </div>
-      <p class="note" style="margin-top:18px">Flight routes and train timings change. Check current schedules before you book.</p>
     </div>
 
     <div id="vp2" role="tabpanel" aria-labelledby="v2" hidden>
@@ -760,6 +783,108 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-betw
         <article class="sight"><div class="dist">~20 min</div><div><h3>Bharathi Park &amp; Pondicherry Museum</h3><p>A shady park in the heart of town, with the museum next door.</p></div></article>
       </div>
       <p class="note" style="margin-top:18px">Drive times are approximate, from JIPMER.</p>
+    </div>
+
+    <div id="vp3" role="tabpanel" aria-labelledby="v3" hidden>
+      <div class="eats">
+        <span>What Pondy is known for</span><b>French bakeries</b><b>Heritage courtyard dining</b><b>Seafront coffee</b><b>Wood-fired pizza</b><b>Chocolate &amp; patisserie</b>
+      </div>
+      <div class="cafes">
+        <article class="cafe rv"><div class="ill t1"><svg viewBox="0 0 240 130" aria-hidden="true" focusable="false">
+<ellipse class="a s" cx="120" cy="104" rx="78" ry="13"/>
+<rect class="d s" x="70" y="80" width="100" height="16" rx="8"/>
+<rect class="d s" x="74" y="66" width="92" height="16" rx="8"/>
+<rect class="d s" x="72" y="52" width="96" height="16" rx="8"/>
+<path class="k2 s" d="M78 56 Q120 42 162 56 L162 62 Q156 70 152 62 Q140 66 132 72 Q128 64 118 64 Q108 70 102 64 Q92 70 86 62 Q80 66 78 60 Z"/>
+<circle class="b s" cx="108" cy="46" r="6"/><circle class="b s" cx="122" cy="42" r="6"/><circle class="b s" cx="134" cy="47" r="5.5"/>
+<path class="s" d="M118 36 q4 -8 12 -8 M126 30 l6 -4"/>
+<path class="s" d="M196 40 v58 M190 40 v14 M196 40 v14 M202 40 v14 M190 54 q6 6 12 0"/>
+</svg></div><div class="cbody"><h3>Anthé</h3><p class="addr">45B, Romain Rolland St, White Town</p><p>All-day dining from breakfast to late night. Big portions, easily shared. Try the penne prawn pasta or blueberry pancakes.</p><a class="lnk" href="https://www.google.com/maps/search/?api=1&amp;query=Anth%C3%A9+45B%2C+Romain+Rolland+St%2C+White+Town+Puducherry&amp;query_place_id=ChIJkbmSCgBjUzoRa5ulxd_jq40" target="_blank" rel="noopener">Open in Google Maps ↗</a></div></article>
+        <article class="cafe rv"><div class="ill t2"><svg viewBox="0 0 240 130" aria-hidden="true" focusable="false">
+<path class="s" d="M20 112 H220"/>
+<rect class="a s" x="52" y="30" width="136" height="82"/>
+<path class="s" d="M46 30 H194 M50 24 H190 V30"/>
+<path class="d s" d="M110 112 V84 a10 10 0 0 1 20 0 V112"/>
+<g class="c s"><path d="M66 70 V52 a9 9 0 0 1 18 0 V70 Z"/><path d="M156 70 V52 a9 9 0 0 1 18 0 V70 Z"/><path d="M111 64 V46 a9 9 0 0 1 18 0 V64 Z"/></g>
+<path class="s" d="M60 74 H96 M144 74 H180 M64 74 v8 M72 74 v8 M80 74 v8 M88 74 v8 M148 74 v8 M156 74 v8 M164 74 v8 M172 74 v8 M60 82 H96 M144 82 H180"/>
+<path class="s" d="M66 90 h18 v14 h-18 z M156 90 h18 v14 h-18 z M75 90 v14 M165 90 v14"/>
+<g class="b s"><circle cx="190" cy="44" r="9"/><circle cx="200" cy="56" r="8"/><circle cx="192" cy="66" r="7"/><circle cx="46" cy="52" r="8"/><circle cx="40" cy="64" r="7"/></g>
+<path class="s" d="M196 112 q-2 -26 -4 -46 M44 112 q0 -24 -2 -46"/>
+</svg></div><div class="cbody"><h3>Coromandel Café</h3><p class="addr">La Maison Rose, 8 Romain Rolland St, White Town</p><p>A restored heritage villa with a leafy courtyard. Known for the potato dauphinoise, pasta and burnt cheesecake. Often full, so book ahead.</p><a class="lnk" href="https://www.google.com/maps/search/?api=1&amp;query=Coromandel+Caf%C3%A9+La+Maison+Rose%2C+8+Romain+Rolland+St%2C+White+Town+Puducherry&amp;query_place_id=ChIJhYeDaStiUzoRkzSz_GifbvM" target="_blank" rel="noopener">Open in Google Maps ↗</a></div></article>
+        <article class="cafe rv"><div class="ill t3"><svg viewBox="0 0 240 130" aria-hidden="true" focusable="false">
+<ellipse class="a" cx="120" cy="104" rx="84" ry="10"/>
+<path class="d s" d="M34 92 Q40 64 64 62 Q76 40 100 38 Q120 30 140 38 Q164 40 176 62 Q200 64 206 92 Q190 84 176 86 Q160 80 150 84 Q120 76 90 84 Q80 80 64 86 Q50 84 34 92 Z"/>
+<path class="s" d="M64 62 Q72 74 64 86 M100 38 Q108 60 90 84 M140 38 Q132 60 150 84 M176 62 Q168 74 176 86 M120 34 Q124 56 120 78"/>
+<path class="s" d="M70 70 q6 2 10 -2 M156 68 q6 4 12 0 M104 54 q6 2 10 -2 M128 54 q6 2 10 -2"/>
+</svg></div><div class="cbody"><h3>Baker Street</h3><p class="addr">123 Bussy St, near Clock Tower</p><p>Pondy's classic French bakery. Almond croissant, chocolatine, mille-feuille and hot chocolate. A second outlet faces the sea on Goubert Avenue.</p><a class="lnk" href="https://www.google.com/maps/search/?api=1&amp;query=Baker+Street+123+Bussy+St%2C+near+Clock+Tower+Puducherry&amp;query_place_id=ChIJR9H0goBhUzoRIk8vlmEefsw" target="_blank" rel="noopener">Open in Google Maps ↗</a></div></article>
+        <article class="cafe rv"><div class="ill t4"><svg viewBox="0 0 240 130" aria-hidden="true" focusable="false">
+<path class="s" d="M26 108 H214"/>
+<path class="d s" d="M48 108 Q40 58 104 48 Q160 42 176 72 Q186 90 180 108 Z"/>
+<path class="a s" d="M80 64 q10 -6 18 2 M104 58 q10 -6 18 2 M128 58 q10 -6 18 2 M150 64 q8 -4 14 4"/>
+<g class="s"><path d="M196 108 Q198 70 206 36"/><path d="M204 44 q-10 -2 -12 -10 q10 0 12 10 z M202 56 q-10 -2 -12 -10 q10 0 12 10 z M200 68 q-10 -2 -12 -10 q10 0 12 10 z M206 48 q8 -4 12 -12 q-10 2 -12 12 z M204 60 q8 -4 12 -12 q-10 2 -12 12 z"/></g>
+<rect class="k2 s" x="28" y="92" width="16" height="16" rx="2"/><path class="s" d="M36 92 v16 M28 100 h16"/>
+</svg></div><div class="cbody"><h3>Bread &amp; Chocolate</h3><p class="addr">6 Marine St, next to Sri Aurobindo Ashram</p><p>Relaxed café with sourdough pizzas, sandwiches and breakfast platters. Plenty of vegetarian and vegan choices.</p><a class="lnk" href="https://www.google.com/maps/search/?api=1&amp;query=Bread+%26+Chocolate+6+Marine+St%2C+next+to+Sri+Aurobindo+Ashram+Puducherry&amp;query_place_id=ChIJUyNRcvtjUzoROa74RwzEDP8" target="_blank" rel="noopener">Open in Google Maps ↗</a></div></article>
+        <article class="cafe rv"><div class="ill t1"><svg viewBox="0 0 240 130" aria-hidden="true" focusable="false">
+<ellipse class="a" cx="112" cy="110" rx="70" ry="8"/>
+<path class="d s" d="M80 44 H144 V96 a12 12 0 0 1 -12 12 H92 a12 12 0 0 1 -12 -12 Z"/>
+<ellipse class="k2 s" cx="112" cy="44" rx="32" ry="7"/>
+<path class="s" d="M144 56 h8 a14 14 0 0 1 0 28 h-8"/>
+<path class="s" d="M98 32 q-6 -8 0 -14 q6 -6 0 -14 M114 30 q-6 -8 0 -14 q6 -6 0 -14 M130 32 q-6 -8 0 -14 q6 -6 0 -14"/>
+<g class="k2 s"><rect x="172" y="84" width="16" height="16" rx="2"/><rect x="190" y="84" width="16" height="16" rx="2"/><rect x="181" y="68" width="16" height="16" rx="2"/></g>
+<path class="b s" d="M92 70 h40" />
+</svg></div><div class="cbody"><h3>Zuka</h3><p class="addr">319 Mission St</p><p>Chocolatier and patisserie famous for its Belgian hot chocolate and pastries. Very little seating; good for gifts to take home.</p><a class="lnk" href="https://www.google.com/maps/search/?api=1&amp;query=Zuka+319+Mission+St+Puducherry&amp;query_place_id=ChIJQyq8RtVjUzoRv55H-HOFnLU" target="_blank" rel="noopener">Open in Google Maps ↗</a></div></article>
+        <article class="cafe rv"><div class="ill t2"><svg viewBox="0 0 240 130" aria-hidden="true" focusable="false">
+<circle class="b" cx="186" cy="34" r="16"/>
+<path class="s" d="M186 10 v6 M186 52 v6 M162 34 h6 M204 34 h6 M169 17 l4 4 M199 47 l4 4 M169 51 l4 -4 M199 21 l4 -4"/>
+<path class="c s" d="M0 96 q15 -10 30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 V130 H0 Z"/>
+<path class="s" d="M0 112 q15 -8 30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0"/>
+<ellipse class="a s" cx="90" cy="84" rx="46" ry="8"/>
+<path class="a s" d="M62 46 H118 V66 a22 22 0 0 1 -22 18 H84 a22 22 0 0 1 -22 -18 Z"/>
+<ellipse class="k2 s" cx="90" cy="46" rx="28" ry="5"/>
+<path class="s" d="M118 52 h6 a9 9 0 0 1 0 18 h-8"/>
+<path class="s" d="M82 36 q-4 -6 0 -10 q4 -4 0 -10 M98 36 q-4 -6 0 -10 q4 -4 0 -10"/>
+</svg></div><div class="cbody"><h3>Le Café</h3><p class="addr">23 Beach Rd, on the promenade</p><p>The seafront café in the old port office, open round the clock. Go for a sunrise coffee by the waves rather than a full meal.</p><a class="lnk" href="https://www.google.com/maps/search/?api=1&amp;query=Le+Caf%C3%A9+23+Beach+Rd%2C+on+the+promenade+Puducherry&amp;query_place_id=ChIJRT6HJGpjUzoR3YIJo9Z6Hn8" target="_blank" rel="noopener">Open in Google Maps ↗</a></div></article>
+        <article class="cafe rv"><div class="ill t3"><svg viewBox="0 0 240 130" aria-hidden="true" focusable="false">
+<ellipse class="a" cx="112" cy="112" rx="80" ry="8"/>
+<circle class="d s" cx="112" cy="66" r="46"/>
+<circle class="b s" cx="112" cy="66" r="38"/>
+<path class="s" d="M112 66 L112 28 M112 66 L146 84 M112 66 L78 84"/>
+<g class="a s"><circle cx="96" cy="50" r="5"/><circle cx="130" cy="52" r="5"/><circle cx="104" cy="84" r="5"/><circle cx="132" cy="74" r="4"/><circle cx="90" cy="68" r="4"/></g>
+<g class="c s"><path d="M120 44 q6 -6 10 0 q-4 6 -10 0 z"/><path d="M92 80 q6 -6 10 0 q-4 6 -10 0 z"/><path d="M122 88 q6 -6 10 0 q-4 6 -10 0 z"/></g>
+<path class="d s" d="M170 100 L200 40 Q214 48 222 62 Z"/><path class="b s" d="M176 92 L200 46 Q210 52 216 62 Z"/>
+</svg></div><div class="cbody"><h3>Café Xtasi</h3><p class="addr">245 Mission St, opposite VOC School</p><p>Thin-crust, wood-fired pizzas made fresh. Expect a 20 to 25 minute wait for your order.</p><a class="lnk" href="https://www.google.com/maps/search/?api=1&amp;query=Caf%C3%A9+Xtasi+245+Mission+St%2C+opposite+VOC+School+Puducherry&amp;query_place_id=ChIJZS8NQdVjUzoRGbpBY2nm6vA" target="_blank" rel="noopener">Open in Google Maps ↗</a></div></article>
+        <article class="cafe rv"><div class="ill t4"><svg viewBox="0 0 240 130" aria-hidden="true" focusable="false">
+<path class="s" d="M60 112 H164 M112 112 V92"/>
+<ellipse class="a s" cx="112" cy="90" rx="58" ry="7"/>
+<path class="d s" d="M72 88 L78 62 H146 L152 88 Z"/>
+<ellipse class="a s" cx="112" cy="62" rx="34" ry="6"/>
+<g class="b s"><circle cx="96" cy="56" r="6"/><circle cx="110" cy="52" r="6"/><circle cx="124" cy="56" r="6"/><circle cx="104" cy="62" r="5"/><circle cx="118" cy="62" r="5"/></g>
+<path class="c s" d="M110 44 q6 -8 12 -2 q-6 6 -12 2 z"/>
+<rect class="d s" x="170" y="80" width="48" height="16" rx="8"/><path class="k2 s" d="M172 84 q22 -8 44 0 v2 q-22 -6 -44 0 z"/>
+<path class="s" d="M36 74 a8 8 0 1 1 16 0 a8 8 0 1 1 -16 0 M32 90 a8 8 0 1 1 16 0 a8 8 0 1 1 -16 0"/>
+</svg></div><div class="cbody"><h3>Le Petit Four</h3><p class="addr">2 La Bourdonnais St, White Town</p><p>A patisserie near the beach with tarts, éclairs, cheesecake and good filter coffee. Their mango-coconut-vanilla dessert is a favourite.</p><a class="lnk" href="https://www.google.com/maps/search/?api=1&amp;query=Le+Petit+Four+2+La+Bourdonnais+St%2C+White+Town+Puducherry&amp;query_place_id=ChIJHV42Iq9jUzoRtlLLoCWpjXo" target="_blank" rel="noopener">Open in Google Maps ↗</a></div></article>
+        <article class="cafe rv"><div class="ill t1"><svg viewBox="0 0 240 130" aria-hidden="true" focusable="false">
+<path class="s" d="M14 112 H226"/>
+<rect class="a s" x="30" y="26" width="180" height="86"/>
+<g class="c s"><path d="M44 112 V64 a20 20 0 0 1 40 0 V112 Z"/><path d="M100 112 V64 a20 20 0 0 1 40 0 V112 Z"/><path d="M156 112 V64 a20 20 0 0 1 40 0 V112 Z"/></g>
+<path class="s" d="M30 38 H210 M120 38 v10"/>
+<path class="d s" d="M112 48 h16 l-2 16 h-12 z"/><path class="s" d="M116 64 h8 M120 64 v4"/>
+<path class="b s" d="M60 112 h16 l-2 -14 h-12 z"/>
+<path class="s" d="M68 98 q-10 -14 -20 -12 M68 98 q-4 -18 0 -26 M68 98 q8 -14 18 -14"/>
+<path class="s" d="M164 100 h28 M170 100 v12 M186 100 v12"/><ellipse class="b s" cx="178" cy="96" rx="10" ry="3"/>
+</svg></div><div class="cbody"><h3>Villa Shanti</h3><p class="addr">14 Suffren St, White Town</p><p>Courtyard dining in a heritage hotel, with French and Indian dishes. Known for its fish dishes and Caesar salad. Good for a relaxed dinner.</p><a class="lnk" href="https://www.google.com/maps/search/?api=1&amp;query=Villa+Shanti+14+Suffren+St%2C+White+Town+Puducherry&amp;query_place_id=ChIJlc4YpitiUzoRdYwRO2XtHAY" target="_blank" rel="noopener">Open in Google Maps ↗</a></div></article>
+        <article class="cafe rv"><div class="ill t2"><svg viewBox="0 0 240 130" aria-hidden="true" focusable="false">
+<ellipse class="a" cx="100" cy="114" rx="70" ry="6"/>
+<path class="a s" d="M76 72 H124 L130 110 H70 Z"/>
+<path class="k2 s" d="M74 92 H126 L129 110 H71 Z"/>
+<path class="d s" d="M70 30 H130 L110 66 H90 Z"/>
+<path class="s" d="M66 30 H134 M100 66 v6"/>
+<path class="s" d="M92 24 q-4 -6 0 -10 q4 -4 0 -10 M108 24 q-4 -6 0 -10 q4 -4 0 -10"/>
+<g class="d s"><ellipse cx="172" cy="92" rx="9" ry="12" transform="rotate(-20 172 92)"/><ellipse cx="196" cy="100" rx="9" ry="12" transform="rotate(25 196 100)"/><ellipse cx="186" cy="74" rx="9" ry="12" transform="rotate(5 186 74)"/></g>
+<path class="s" d="M168 82 q6 10 8 20 M194 90 q-4 10 4 20 M186 63 q-2 10 0 22"/>
+</svg></div><div class="cbody"><h3>Coffee Ideas (formerly Marc's Café)</h3><p class="addr">Auroville Road, Auroville</p><p>Coffee roasted in-house, kombucha and mini croissants. Pair it with an Auroville visit. Closed on Wednesdays.</p><a class="lnk" href="https://www.google.com/maps/search/?api=1&amp;query=Coffee+Ideas+%28formerly+Marc%27s+Caf%C3%A9%29+Auroville+Road%2C+Auroville+Puducherry&amp;query_place_id=ChIJv3W7Z6ZmUzoRTf4Ao8XqA4M" target="_blank" rel="noopener">Open in Google Maps ↗</a></div></article>
+      </div>
+      <p class="note" style="margin-top:18px">Most are in White Town, about 20 minutes from JIPMER. Popular places get busy on weekends.</p>
     </div>
   </div>
 </section>
@@ -830,7 +955,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-betw
     var ts=[].slice.call(g.querySelectorAll('.tab')),ind=g.querySelector('.tab-ind');
     function pl(i){ind.style.width=ts[i].offsetWidth+'px';ind.style.transform='translateX('+(ts[i].offsetLeft-5)+'px)'}
     function s(i,f){ts.forEach(function(t,j){t.setAttribute('aria-selected',j===i);t.tabIndex=j===i?0:-1;var p=document.getElementById(t.getAttribute('aria-controls'));p.hidden=j!==i;if(j===i){p.classList.remove('fade-in');void p.offsetWidth;p.classList.add('fade-in')}});pl(i);if(f)ts[i].focus()}
-    ts.forEach(function(t,i){t.addEventListener('click',function(){s(i)});t.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();s(i?0:1,true)}})});
+    ts.forEach(function(t,i){t.addEventListener('click',function(){s(i)});t.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();var n=ts.length;s(e.key==='ArrowRight'?(i+1)%n:(i-1+n)%n,true)}})});
     var cur=function(){return ts.findIndex(function(t){return t.getAttribute('aria-selected')==='true'})};
     s(0);window.addEventListener('resize',function(){pl(cur())});if(document.fonts)document.fonts.ready.then(function(){pl(cur())});
   });
