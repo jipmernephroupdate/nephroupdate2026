@@ -329,6 +329,11 @@ section{padding-block:72px}
 @media (max-width:640px){.navbtns{gap:6px}.navbtns .btn{padding:9px 4px;font-size:12.5px}}
 .person img{width:100px!important;height:124px!important;border-radius:50% / 42%!important;object-fit:cover;box-shadow:0 0 0 3px var(--bg),0 0 0 4px var(--line)!important}
 .person:hover img{transform:none}
+/* cursor-following background hue (mouse devices only) */
+.hue-glow{position:fixed;inset:0;pointer-events:none;z-index:40;mix-blend-mode:multiply;opacity:0;transition:opacity 1.2s ease;
+  background:radial-gradient(620px circle at var(--gx,50%) var(--gy,30%),hsla(var(--gh,18),75%,82%,.55),hsla(var(--gh,18),75%,88%,0) 70%)}
+body.hue-on .hue-glow{opacity:1}
+@media (prefers-reduced-motion:reduce){.hue-glow{display:none}}
 /* final */
 .final{text-align:center;padding-block:110px 120px;position:relative;overflow:hidden;isolation:isolate}
 .final h2{font-size:clamp(46px,9vw,112px);font-weight:800;letter-spacing:-.045em;line-height:.95}
@@ -932,6 +937,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-betw
 </footer>
 
 
+<div class="hue-glow" aria-hidden="true"></div>
 <script>
 (function(){
   var START=new Date('2026-10-24T13:30:00+05:30').getTime();
@@ -977,6 +983,16 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-betw
     var cur=function(){return ts.findIndex(function(t){return t.getAttribute('aria-selected')==='true'})};
     s(0);window.addEventListener('resize',function(){pl(cur())});if(document.fonts)document.fonts.ready.then(function(){pl(cur())});
   });
+
+  // subtle background hue that follows the cursor
+  if(matchMedia('(pointer:fine)').matches && !matchMedia('(prefers-reduced-motion: reduce)').matches){
+    var G=document.querySelector('.hue-glow'),tx=innerWidth/2,ty=innerHeight/3,cx=tx,cy=ty,ch=18,th=18;
+    addEventListener('mousemove',function(e){tx=e.clientX;ty=e.clientY;th=4+(e.clientX/innerWidth)*30+(e.clientY/innerHeight)*16;document.body.classList.add('hue-on')});
+    document.addEventListener('mouseleave',function(){document.body.classList.remove('hue-on')});
+    (function loop(){cx+=(tx-cx)*.06;cy+=(ty-cy)*.06;ch+=(th-ch)*.03;
+      G.style.setProperty('--gx',cx.toFixed(1)+'px');G.style.setProperty('--gy',cy.toFixed(1)+'px');G.style.setProperty('--gh',ch.toFixed(1));
+      requestAnimationFrame(loop)})();
+  }
 
   // copy
   document.querySelectorAll('[data-copy]').forEach(function(b){b.addEventListener('click',function(){
